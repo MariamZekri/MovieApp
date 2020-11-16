@@ -7,7 +7,7 @@ target 'MovieApp' do
 
   # Pods for MovieApp
   
-  pod 'Alamofire'
+  pod 'Moya'
   pod 'Kingfisher'
   pod 'UIScrollView-InfiniteScroll'
   

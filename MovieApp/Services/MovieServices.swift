@@ -7,19 +7,47 @@
 //
 
 import Foundation
+import Moya
 
-class MovieServices : NSObject {
+public enum MovieServices {
+    case TVList
+}
+
+extension MovieServices: TargetType {
+    public var baseURL: URL {
+        switch self {
+        case .TVList:
+            return URL(string: Constants.baseURl + "3/tv/popular?api_key=\(Constants.api_key)")!
+        }
+        
+    }
     
-    private let apiKey = "3b13831a9cc291e8995ab77ede7acac2"
-    private let baseUrl = "https://api.themoviedb.org/3/movie"
+    public var path: String {
+        return ""
+    }
     
+    public var method: Moya.Method {
+        switch self {
+        case .TVList:
+            return .get
+        }
+    }
     
-    private let jsonDecoder: JSONDecoder = {
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd"
-        jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
-        return jsonDecoder
-    }()
+    public var sampleData: Data {
+        return Data()
+    }
+    
+    public var task: Task {
+        switch self {
+        case .TVList:
+            return .requestPlain
+        }
+    }
+    
+    public var headers: [String : String]? {
+        var header = [String : String]()
+        header["api_key"] = Constants.api_key
+         return header
+    }
+    
 }

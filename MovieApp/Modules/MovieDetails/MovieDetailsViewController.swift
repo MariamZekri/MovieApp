@@ -10,13 +10,40 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController {
 
+    // MARK: - Helper variables
+    var movie: ModelTVShow?
+    
+    // MARK: - Outlets
+    @IBOutlet weak var selectedMoviePhoto: UIImageView!
+    
+    @IBOutlet weak var movieDescriptionLbl: UILabel!
+   
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setData()
     }
     
+    
+   // MARK: - Helper Method To Set Data
 
+    func setData(){
+        movieDescriptionLbl.text = movie?.overview
+        
+        
+        
+        let url = URL(string: "http://image.tmdb.org/t/p/w500/\(movie?.posterPath ?? "")")
+        selectedMoviePhoto.kf.setImage(with: url)
+    }
+   // MARK: - Actions
+    @IBAction func backActionBtn(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

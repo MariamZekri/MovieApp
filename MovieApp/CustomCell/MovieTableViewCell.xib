@@ -34,17 +34,52 @@
                             <constraint firstItem="Kaw-3C-MOK" firstAttribute="centerX" secondItem="emH-BC-nWa" secondAttribute="centerX" id="vqZ-CZ-dpd"/>
                         </constraints>
                     </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="nCZ-JD-4gk">
+                        <rect key="frame" x="93" y="11" width="96.5" height="78.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Original Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4u-9a-atp">
+                                <rect key="frame" x="0.0" y="0.0" width="96.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="darkGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfH-d6-x95">
+                                <rect key="frame" x="0.0" y="31.5" width="30" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="darkGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLM-Th-VlC">
+                                <rect key="frame" x="0.0" y="60.5" width="88.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="darkGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="nCZ-JD-4gk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="8s2-vg-6P2"/>
                     <constraint firstItem="emH-BC-nWa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="XGT-ZV-vZy"/>
+                    <constraint firstItem="nCZ-JD-4gk" firstAttribute="leading" secondItem="emH-BC-nWa" secondAttribute="trailing" constant="8" id="Yck-AM-rRK"/>
                     <constraint firstItem="emH-BC-nWa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="aHc-hA-4C5"/>
+                    <constraint firstAttribute="bottom" secondItem="nCZ-JD-4gk" secondAttribute="bottom" constant="10.5" id="w84-de-a2A"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="movieOrginalTitleLbl" destination="k4u-9a-atp" id="IOJ-oy-kRw"/>
+                <outlet property="moviePhoto" destination="Kaw-3C-MOK" id="BF1-iT-cqo"/>
+                <outlet property="movieReleaseDateLbl" destination="vLM-Th-VlC" id="Ras-Fk-hUj"/>
+                <outlet property="movieTitleLbl" destination="NfH-d6-x95" id="Bqj-Yt-dUM"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="darkGray">
+            <color red="0.2627450980392157" green="0.29019607843137257" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
