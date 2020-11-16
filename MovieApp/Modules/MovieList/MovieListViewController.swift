@@ -9,7 +9,7 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
-
+    
     // MARK: - Helper variables
     
     // get instance of VM
@@ -25,7 +25,7 @@ class MovieListViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         viewModel = MovieListViewModelImp()
         viewModel?.getMovieList(page: "")
@@ -34,11 +34,11 @@ class MovieListViewController: UIViewController {
         movieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
     }
     
-
+    
     // MARK: - Actions
     
-
-
+    
+    
 }
 
 
@@ -55,7 +55,7 @@ extension MovieListViewController {
         }
         
         viewModel.updatedModelTVList.bind {
-
+            
             if $0 {
                 self.movieTableView.reloadData()
             } else {
@@ -72,22 +72,22 @@ extension MovieListViewController {
 extension MovieListViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.movieList.count ?? 0
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath ) as! MovieTableViewCell
-      
-
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath ) as! MovieTableViewCell
+        
+        
+        
         cell.setCell(obj: (viewModel?.movieList[indexPath.row])!)
-      
-      return cell
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-
+        
     }
     
     

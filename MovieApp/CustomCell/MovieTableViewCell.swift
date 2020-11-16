@@ -15,8 +15,8 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var moviePhoto: UIImageView!
     @IBOutlet weak var movieOrginalTitleLbl: UILabel!
     @IBOutlet weak var movieTitleLbl: UILabel!
-    @IBOutlet weak var movieReleaseDateLbl: UILabel!
     
+    @IBOutlet weak var averageRateLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +35,6 @@ class MovieTableViewCell: UITableViewCell {
         let url = URL(string: "http://image.tmdb.org/t/p/w500/\(obj.posterPath ?? "")")
                moviePhoto.kf.setImage(with: url)
        //        moviePhoto.layer.cornerRadius = min(moviePhoto.frame.height,moviePhoto.frame.width) / 2
-        movieReleaseDateLbl.text = "\(obj.voteAverage ?? 0.0)"
+        averageRateLbl.text = "\(obj.voteAverage ?? 0.0)"
     }
 }
