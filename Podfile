@@ -6,6 +6,11 @@ target 'MovieApp' do
   use_frameworks!
 
   # Pods for MovieApp
+  
+  pod 'Alamofire'
+  pod 'Kingfisher'
+  pod 'UIScrollView-InfiniteScroll'
+  
 
   target 'MovieAppTests' do
     inherit! :search_paths
