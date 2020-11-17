@@ -10,6 +10,24 @@ import Foundation
 import Moya
 
 class MovieListViewModelImp : MovieListViewModel{
+
+   // MARK: - Paging
+   var page : Int = 1
+
+    var movieList: [ModelTVShow] = []
+    var errorDescription: String?
+    let endPointTVshowsProvider = MoyaProvider<MovieServices>()
+
+    var updatedModelTVList: Dynamic<Bool>
+    
+    // to init the VM
+    init() {
+        self.movieList = [ModelTVShow]()
+        self.errorDescription = ""
+        self.updatedModelTVList = Dynamic(false)
+    }
+    
+
     func getMovieList() {
         endPointTVshowsProvider.request(.TVList(page: page)) { [weak self] result in
                    guard let self = self else { return }
@@ -36,27 +54,6 @@ class MovieListViewModelImp : MovieListViewModel{
                }
 
     }
-    
-
-    
-   // MARK: - Paging
-   var page : Int = 1
-
-    var movieList: [ModelTVShow] = []
-    var errorDescription: String?
-    let endPointTVshowsProvider = MoyaProvider<MovieServices>()
-
-    var updatedModelTVList: Dynamic<Bool>
-    
-    // to init the VM
-    init() {
-        self.movieList = [ModelTVShow]()
-        self.errorDescription = ""
-        self.updatedModelTVList = Dynamic(false)
-    }
-    
-
-
 
 
 }
