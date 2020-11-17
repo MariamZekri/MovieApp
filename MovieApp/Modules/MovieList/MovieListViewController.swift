@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieListViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class MovieListViewController: UIViewController {
         }
     }
     
+    
     // MARK: - Outlets
     @IBOutlet weak var movieTableView: UITableView!
     
@@ -28,8 +30,19 @@ class MovieListViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         viewModel = MovieListViewModelImp()
-        viewModel?.getMovieList(page: "")
         
+        viewModel?.getMovieList()
+        
+
+        movieTableView.addInfiniteScroll { (tableView) -> Void in
+            // update table view
+
+            self.viewModel?.getMovieList()
+
+            // finish infinite scroll animation
+
+        }
+
         movieTableView.register(MovieTableViewCell.self, forCellReuseIdentifier: "MovieTableViewCell")
         movieTableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
     }
@@ -58,6 +71,8 @@ extension MovieListViewController {
             
             if $0 {
                 self.movieTableView.reloadData()
+                self.movieTableView.finishInfiniteScroll()
+                CoreDataManager.sharedManager.saveToDB(m: viewModel.movieList[0])
             } else {
                 // to show the error
                 if viewModel.errorDescription != "" {

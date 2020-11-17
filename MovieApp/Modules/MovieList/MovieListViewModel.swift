@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Moya
 
 protocol MovieListViewModel{
     
@@ -17,7 +18,7 @@ protocol MovieListViewModel{
     // the dynamic flag to fire the listener
     var updatedModelTVList: Dynamic <Bool> {get}
     // ---------------Functions----------------
-    func getMovieList(page: String)
+    func getMovieList()
     
    
 

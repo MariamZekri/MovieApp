@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 public enum MovieServices {
-    case TVList
+    case TVList(page: Int)
 }
 
 extension MovieServices: TargetType {
@@ -38,10 +38,15 @@ extension MovieServices: TargetType {
     }
     
     public var task: Task {
+    var params: [String : Any] = ["api_key": Constants.api_key]
+        
         switch self {
-        case .TVList:
-            return .requestPlain
+        case .TVList(let page):
+            params["page"] = "\(page)"
+          
         }
+        
+        return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
     }
     
     public var headers: [String : String]? {

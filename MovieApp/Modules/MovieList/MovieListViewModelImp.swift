@@ -10,7 +10,38 @@ import Foundation
 import Moya
 
 class MovieListViewModelImp : MovieListViewModel{
-   
+    func getMovieList() {
+        endPointTVshowsProvider.request(.TVList(page: page)) { [weak self] result in
+                   guard let self = self else { return }
+                   switch result {
+                   case .success(let response):
+            
+                       do {
+                           let modelTVList = try response.map(ModelTVList.self)
+                           guard let tvResult = modelTVList.results  else { return }
+                           self.movieList.append(contentsOf: tvResult)
+                           self.page += self.page
+                           self.movieList.sort { $0.voteAverage ?? 0 > $1.voteAverage ?? 0}
+                           self.updatedModelTVList.value = true
+                       } catch let error {
+                           print("Error in Mapping----->\(error.localizedDescription)")
+                           self.errorDescription? = error.localizedDescription
+                           self.updatedModelTVList.value = false
+                       }
+                   case .failure(let error):
+                       print("Error in Api---->\(error.localizedDescription)")
+                       self.errorDescription? = error.localizedDescription
+                       self.updatedModelTVList.value = false
+                   }
+               }
+
+    }
+    
+
+    
+   // MARK: - Paging
+   var page : Int = 1
+
     var movieList: [ModelTVShow] = []
     var errorDescription: String?
     let endPointTVshowsProvider = MoyaProvider<MovieServices>()
@@ -22,33 +53,6 @@ class MovieListViewModelImp : MovieListViewModel{
         self.movieList = [ModelTVShow]()
         self.errorDescription = ""
         self.updatedModelTVList = Dynamic(false)
-    }
-    
-    func getMovieList(page: String) {
-      
-        endPointTVshowsProvider.request(.TVList) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                do {
-                    let modelTVList = try response.map(ModelTVList.self)
-                    guard var tvResult = modelTVList.results  else { return }
-                    tvResult.sort { $0.voteAverage ?? 0 > $1.voteAverage ?? 0}
-                    self.movieList = tvResult
-                    self.updatedModelTVList.value = true
-                } catch let error {
-                    print("Error in Mapping----->\(error.localizedDescription)")
-                    self.errorDescription? = error.localizedDescription
-                    self.updatedModelTVList.value = false
-                }
-            case .failure(let error):
-                print("Error in Api---->\(error.localizedDescription)")
-                self.errorDescription? = error.localizedDescription
-                self.updatedModelTVList.value = false
-            }
-        }
-
     }
     
 

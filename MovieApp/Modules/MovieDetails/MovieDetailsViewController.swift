@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIScrollView_InfiniteScroll
 
 class MovieDetailsViewController: UIViewController {
 
@@ -15,7 +16,6 @@ class MovieDetailsViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var selectedMoviePhoto: UIImageView!
-    
     @IBOutlet weak var movieDescriptionLbl: UILabel!
    
     // MARK: - Life Cycle
@@ -36,6 +36,8 @@ class MovieDetailsViewController: UIViewController {
         
         let url = URL(string: "http://image.tmdb.org/t/p/w500/\(movie?.posterPath ?? "")")
         selectedMoviePhoto.kf.setImage(with: url)
+        
+        
     }
    // MARK: - Actions
     @IBAction func backActionBtn(_ sender: Any) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2649F1C92563C2800018B9DC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649F1C82563C2800018B9DC /* CoreDataManager.swift */; };
 		266862482562AD040057109F /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266862472562AD040057109F /* MovieListViewController.swift */; };
 		2668624B2562AD360057109F /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2668624A2562AD360057109F /* MovieDetailsViewController.swift */; };
 		2668624F2562B2BC0057109F /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2668624D2562B2BC0057109F /* MovieTableViewCell.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2649F1C82563C2800018B9DC /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		266862472562AD040057109F /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		2668624A2562AD360057109F /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		2668624D2562B2BC0057109F /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2649F1C72563C2660018B9DC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2649F1C82563C2800018B9DC /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		266862452562AB750057109F /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +193,7 @@
 		26E5AFAB2561817C00F590F0 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				2649F1C72563C2660018B9DC /* CoreData */,
 				26686257256304010057109F /* Utilities */,
 				266862542562D3F60057109F /* Model */,
 				266862512562C3890057109F /* Services */,
@@ -409,6 +420,7 @@
 				26686260256308260057109F /* MovieListViewModelImp.swift in Sources */,
 				26E5AFB72561817C00F590F0 /* MovieApp.xcdatamodeld in Sources */,
 				26E5AFAF2561817C00F590F0 /* SceneDelegate.swift in Sources */,
+				2649F1C92563C2800018B9DC /* CoreDataManager.swift in Sources */,
 				266862592563041A0057109F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
